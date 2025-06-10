@@ -65,7 +65,7 @@ if selected_kor_name:
         st.header(f"✨ {name}")
         st.image(image_url, caption=name, width=200)
 
-        st.markdown(f"**🌈 타입:** {', '.join(types)}")
+        st.markdown(f"**🧬 타입:** {', '.join(types)}")
         st.markdown(f"**📏 키:** {height} m")
         st.markdown(f"**⚖️ 몸무게:** {weight} kg")
     else:
