@@ -1,9 +1,14 @@
 import streamlit as st
 import requests
 
-st.set_page_config(page_title="MetaMonDex", page_icon="🟣", layout="centered")
+# 설정: 앱 제목, 아이콘을 메타몽으로!
+st.set_page_config(
+    page_title="MetaMonDex",
+    page_icon="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
+    layout="centered"
+)
 
-# MetaMon 스타일 적용
+# 메타몽 스타일 CSS
 st.markdown("""
     <style>
     body { background-color: #f3e8fc; }
@@ -13,8 +18,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🟣 MetaMonDex")
-st.write("한글로도 검색할 수 있는 귀여운 포켓몬 도감이에요!")
+# 상단에 메타몽 이미지 추가
+st.image("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png", width=100)
+st.title("MetaMonDex")
+st.write("한글로도 검색할 수 있는 귀여운 메타몽 포켓몬 도감이에요!")
 
 # 한글-영문 이름 매핑
 @st.cache_data
@@ -29,16 +36,12 @@ def get_korean_name_mapping():
             species_detail = requests.get(species["url"])
             if species_detail.status_code == 200:
                 data = species_detail.json()
-                eng_name = data["name"]
-                # 한글 이름 찾기
                 for name_entry in data["names"]:
                     if name_entry["language"]["name"] == "ko":
-                        kor_name = name_entry["name"]
-                        name_map[kor_name] = eng_name
+                        name_map[name_entry["name"]] = data["name"]
                         break
-    return dict(sorted(name_map.items()))  # 가나다순
+    return dict(sorted(name_map.items()))
 
-# 한글 이름으로 선택
 name_map = get_korean_name_mapping()
 korean_names = list(name_map.keys())
 
@@ -67,4 +70,3 @@ if selected_kor_name:
         st.markdown(f"**⚖️ 몸무게:** {weight} kg")
     else:
         st.error("포켓몬 정보를 불러올 수 없습니다.")
-
