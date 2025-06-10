@@ -1,10 +1,10 @@
 import streamlit as st
 import requests
 
-st.title("포켓몬 이미지 검색기")
+st.title("MetaMonDex")
 
 # 사용자로부터 포켓몬 이름 입력 받기
-pokemon_name = st.text_input("포켓몬 이름을 입력하세요 (예: pikachu, bulbasaur 등):").strip().lower()
+pokemon_name = st.text_input("포켓몬 이름을 입력하세요 (예: pikachu, ditto 등):").strip().lower()
 
 if pokemon_name:
     api_url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_name}"
