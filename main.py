@@ -18,13 +18,15 @@ st.set_page_config(
 )
 
 st.markdown("""
-    <style>
-    body { background-color: #f3e8fc; }
-    .stApp { background-color: #f3e8fc; }
-    h1, h2, h3 { color: #7b2cbf; }
-    .block-container { padding-top: 2rem; }
-    </style>
+<h1 style='text-align: center;
+           font-size: 48px;
+           color: #a855f7;
+           text-shadow: 2px 2px #d8b4fe;
+           font-weight: bold;'>
+    🟣 MetaMonDex 🌈
+</h1>
 """, unsafe_allow_html=True)
+
 
 # 페이지 상태 초기화
 if "page" not in st.session_state:
