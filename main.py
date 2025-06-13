@@ -21,7 +21,7 @@ st.markdown("""
 # 상단에 메타몽 이미지 추가
 st.image("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png", width=100)
 st.title("MetaMonDex")
-st.write("한글로도 검색할 수 있는 귀여운 메타몽 포켓몬 도감이에요!")
+st.write("간편하게 한글로 검색하는 귀여운 메타몽 포켓몬 도감!")
 
 # 한글-영문 이름 매핑
 @st.cache_data
@@ -62,7 +62,7 @@ if selected_kor_name:
         image_url = data["sprites"]["front_default"]
 
         st.markdown("---")
-        st.header(f"✨ {name}")
+        st.header(f"✨ {name} ✨")
         st.image(image_url, caption=name, width=200)
 
         st.markdown(f"**🧬 타입:** {', '.join(types)}")
