@@ -48,6 +48,16 @@ korean_names = list(name_map.keys())
 st.subheader("🔍 포켓몬을 한글로 검색해보세요!")
 selected_kor_name = st.selectbox("포켓몬 이름 (한글):", korean_names)
 
+# 타입 번역 딕셔너리 추가
+TYPE_TRANSLATIONS = {
+    "Normal": "노말", "Fire": "불꽃", "Water": "물", "Electric": "전기",
+    "Grass": "풀", "Ice": "얼음", "Fighting": "격투", "Poison": "독",
+    "Ground": "땅", "Flying": "비행", "Psychic": "에스퍼", "Bug": "벌레",
+    "Rock": "바위", "Ghost": "고스트", "Dragon": "드래곤", "Dark": "악",
+    "Steel": "강철", "Fairy": "페어리"
+}
+
+# 포켓몬 정보 표시 부분 수정
 if selected_kor_name:
     eng_name = name_map[selected_kor_name]
     api_url = f"https://pokeapi.co/api/v2/pokemon/{eng_name}"
@@ -58,15 +68,20 @@ if selected_kor_name:
         name = selected_kor_name
         height = data["height"] / 10
         weight = data["weight"] / 10
-        types = [t["type"]["name"].capitalize() for t in data["types"]]
+
+        # 타입을 한글로 변환
+        types_eng = [t["type"]["name"].capitalize() for t in data["types"]]
+        types_kor = [TYPE_TRANSLATIONS.get(t, t) for t in types_eng]  # 번역 적용
+
         image_url = data["sprites"]["front_default"]
 
         st.markdown("---")
         st.header(f"✨ {name} ✨")
         st.image(image_url, caption=name, width=200)
 
-        st.markdown(f"**🧬 타입:** {', '.join(types)}")
+        st.markdown(f"**🧬 타입:** {', '.join(types_kor)}")
         st.markdown(f"**📏 키:** {height} m")
         st.markdown(f"**⚖️ 몸무게:** {weight} kg")
+
     else:
         st.error("포켓몬 정보를 불러올 수 없습니다.")
