@@ -80,7 +80,7 @@ elif st.session_state.page == "result":
         types_kor = [TYPE_TRANSLATIONS.get(t, t) for t in types_eng]
         image_url = data["sprites"]["front_default"]
 
-        st.title(f"✨ {selected_kor_name}")
+        st.title(f"✨ {selected_kor_name} ✨")
         st.image(image_url, caption=selected_kor_name, width=200)
         st.markdown(f"**🧬 타입:** {', '.join(types_kor)}")
         st.markdown(f"**📏 키:** {height} m")
