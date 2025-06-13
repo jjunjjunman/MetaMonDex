@@ -54,7 +54,7 @@ name_map = get_korean_name_mapping()
 
 # 1️⃣ 검색 화면
 if st.session_state.page == "search":
-    st.image("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png", width:100)
+    st.image("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png", width=100)
     st.title("MetaMonDex")
     st.write("한글로 포켓몬을 검색해보세요!")
 
