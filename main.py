@@ -86,7 +86,7 @@ elif st.session_state.page == "result":
         st.markdown(f"**📏 키:** {height} m")
         st.markdown(f"**⚖️ 몸무게:** {weight} kg")
 
-        if st.button("🔙 돌아가기"):
+        if st.button("↩️"):
             st.session_state.page = "search"
             st.rerun()
     else:
