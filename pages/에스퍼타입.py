@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-st.title("🧠 에스퍼타입 포켓몬 목록")
+st.title("🔮 에스퍼타입 포켓몬 목록")
 
 # 에스퍼타입의 ID는 14번
 type_url = "https://pokeapi.co/api/v2/type/psychic"
